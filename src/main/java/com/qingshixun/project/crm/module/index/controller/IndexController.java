@@ -10,6 +10,8 @@ package com.qingshixun.project.crm.module.index.controller;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import com.qingshixun.project.crm.model.SalesOrderModel;
+import com.qingshixun.project.crm.module.sales.service.SalesOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,9 +62,9 @@ public class IndexController extends BaseController {
 //    @Autowired
 //    private QuotationService quotationService;
 //
-//    // 注入销售订单处理service
-//    @Autowired
-//    private SalesOrderService salesOrderService;
+        // 注入销售订单处理service
+        @Autowired
+        private SalesOrderService salesOrderService;
 //
 //    // 注入问题单处理service
 //    @Autowired
@@ -141,9 +143,9 @@ public class IndexController extends BaseController {
 //            List<QuotationModel> quotationList = quotationService.getQuotationList(value);
 //            model.addAttribute("quotationList", quotationList);
 //
-//            // 查询销售订单数据
-//            List<SalesOrderModel> salesOrderList = salesOrderService.getSalesOrderList(value);
-//            model.addAttribute("salesOrderList", salesOrderList);
+            // 查询销售订单数据
+            List<SalesOrderModel> salesOrderList = salesOrderService.getSalesOrderList(value);
+            model.addAttribute("salesOrderList", salesOrderList);
 //
 //            // 查询问题单数据
 //            List<IssueModel> issueList = issueService.getIssueList(value);
