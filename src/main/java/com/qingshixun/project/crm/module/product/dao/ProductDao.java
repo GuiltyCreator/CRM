@@ -36,5 +36,15 @@ public class ProductDao extends BaseHibernateDao<ProductModel, Long> {
 
     }
 
+    /**
+     * 获取可供查看的产品分页信息
+     * @param params
+     * @return
+     */
+    public PageContainer getProductList(Map<String,String> params){
+
+        Criterion criterion=createCriterion("status.code", "PROS_Sale");
+        return getDataPage(params,criterion);
+    }
 
 }

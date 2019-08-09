@@ -6,10 +6,12 @@ import com.qingshixun.project.crm.model.ContactModel;
 import com.qingshixun.project.crm.module.contact.dao.ContactDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 
 @Service
+@Transactional
 public class ContactService extends BaseService {
 
     @Autowired

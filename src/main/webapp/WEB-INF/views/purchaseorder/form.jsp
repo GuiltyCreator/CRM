@@ -288,13 +288,14 @@
                         content += "<tr role='row' >"
                             +"<td style='display: none;'><input type='text' name='itemId' value='"+item.id+"' />"+"</td>"
                             +"<td style='display: none;'><input type='text' name='productId' value='"+item.product.id+"' />"+"</td>"
+							+"<td style='display: none;'><input type='text' name='oldQuantity' value='" + item.quantity + "' />" + "</td>"
                             +"<td>"+item.product.name+"</td>"
                             +"<td style='display: none;'><input type='text' name='price' value='"+item.product.price+"' />"+"</td>"
                             +"<td><input type='text' id='"+item.product.id+"' name='quantity' value='"+item.quantity+"' data-rule='required; integer[+1];' />"+"</td>"
                             +"<td><input type='text' name='inventory' value='"+item.product.inventory+"' disabled='disabled' />"+"</td>"
                             +"<td><img width='50px;' height='50px;' src='${ctx}/${imagePath}"+item.product.picture+"' />"+"</td>"
                             +"<td>"+item.product.status.name+"</td>"
-                            +"<td>"+"<button type='button' onclick='deleteProductFromPurchaseOrderDetail(this,"+item.id+")' title='删除' class='btn btn-danger btn-xs delete'>" + "<i class='fa fa-trash-o'></i>" + "</button>"+"</td>"
+                            +"<td>"+"<button type='button' onclick='deleteProductFromDetail(this,"+item.id+")' title='删除' class='btn btn-danger btn-xs delete'>" + "<i class='fa fa-trash-o'></i>" + "</button>"+"</td>"
                         +"</tr>";
                     });
                 $('#detailTbody').append(content);
@@ -305,7 +306,7 @@
     }
   
     //删除产品
-    function deleteProductFromPurchaseOrderDetail(self, id) {
+    function deleteProductFromDetail(self, id) {
         $.confirm({
             title : false,
             content : '是否确认删除该产品？',

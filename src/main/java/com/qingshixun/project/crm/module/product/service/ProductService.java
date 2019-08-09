@@ -45,4 +45,22 @@ public class ProductService extends BaseService {
         return productDao.getSelectProductByIds(ids);
     }
 
+    /**
+     * 获取可供查看的产品分页信息
+     * @param params
+     * @return
+     */
+    public PageContainer getProductList(Map<String ,String> params){
+        return productDao.getProductList(params);
+    }
+
+    /**
+     * 根据id查找产品
+     * @param id
+     * @return
+     */
+    public ProductModel getProductById(Long id){
+        return productDao.get(id);
+    }
+
 }

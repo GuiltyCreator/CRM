@@ -123,7 +123,7 @@
                                 + "<td><input type='text' id='"+item.id+"' name='quantity' value='"+1+"' data-rule='required; integer;range[1~]' /></td>" 
                                 + "<td><input type='text' name='inventory' value='"+item.inventory+"' disabled='disabled' /></td>" 
                                 + "<td><img width='100px;' height='100px;' src='${ctx}/${imagePath}"+item.picture+"' /></td>"
-                                + "<td>" + item.status.name + "</td>" + "<td>" + "<button type='button' onclick='deleteProductFromSalesOrderDetail(this,0)' title='删除' class='btn btn-danger btn-xs delete'>" + "<i class='fa fa-trash-o'></i>" + "</button>" + "</td>" + "</tr>";
+                                + "<td>" + item.status.name + "</td>" + "<td>" + "<button type='button' onclick='deleteProductFromDetail(this,0)' title='删除' class='btn btn-danger btn-xs delete'>" + "<i class='fa fa-trash-o'></i>" + "</button>" + "</td>" + "</tr>";
                     });
                     $('#detailTbody').append(content);
                 } else {

@@ -31,7 +31,6 @@ public class SalesOrderDao extends BaseHibernateDao<SalesOrderModel,Long> {
      * @param params
      * @return
      */
-    @Transactional(readOnly = true)
     public PageContainer getSalesOrderPage(Map<String ,String > params){
         Criterion salesOrderName = createLikeCriterion("theme","%"+params.get("theme")+"%");
         return getDataPage(params,salesOrderName);

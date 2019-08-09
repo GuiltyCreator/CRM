@@ -3,7 +3,6 @@ package com.qingshixun.project.crm.module.sales.service;
 import com.qingshixun.project.crm.core.BaseService;
 import com.qingshixun.project.crm.core.PageContainer;
 import com.qingshixun.project.crm.model.ProductModel;
-import com.qingshixun.project.crm.model.ProductStatus;
 import com.qingshixun.project.crm.model.SalesOrderItemModel;
 import com.qingshixun.project.crm.model.SalesOrderModel;
 import com.qingshixun.project.crm.module.product.dao.ProductDao;
@@ -18,6 +17,7 @@ import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -58,6 +58,7 @@ public class SalesOrderService extends BaseService {
      * @param salesOrderId
      */
     public void deleteSalesOrder(Long salesOrderId) {
+
         salesOrderDao.delete(salesOrderId);
     }
 
@@ -84,9 +85,11 @@ public class SalesOrderService extends BaseService {
         String[] prices = request.getParameterValues("price");
         String[] salesOrderItemIds = request.getParameterValues("itemId");
         //编辑之前的需求数量。
-        String[] oldquantities=request.getParameterValues("oldQuantity");
+        String[] oldquantities={"0"};
+        if(request.getParameterValues("oldQuantity")!=null){
+            oldquantities = request.getParameterValues("oldQuantity");
+        }
 
-        List<SalesOrderItemModel> itemModels=null;
         boolean flag = false;//判断是否是新增的标志
         //订单总数量
         int totalquantitiy = 0;
@@ -95,7 +98,7 @@ public class SalesOrderService extends BaseService {
 
 
         /*注意这里为什么要这样做？
-        因为SalesOrderItemModel.class中设置了CascadeType.PERSIST的联级操作：
+        因为SalesOrderItemModel.class中设置了联级操作：
         应该让SalesOrderModel和ProductModel先保存，再保存SalesOrderItemModel。*/
 
         //保存订单
@@ -149,15 +152,17 @@ public class SalesOrderService extends BaseService {
                         oldquantities = item.getQuantity();
                     }
                 }*/
-
-               oldquantity=Integer.parseInt(oldquantities[i]);
-                logger.debug("寻找以前的需求量"+oldquantity);
+                if(i<oldquantities.length) {
+                    //超过的就是编辑时新增的条目信息，oldquantity应该为0
+                    oldquantity = Integer.parseInt(oldquantities[i]);
+                    logger.debug("寻找以前的需求量" + oldquantity);
+                }
             }
 
                 product.setInventory(inventory - (newquantity - oldquantity));
                 if (product.getInventory() <= 0) {
                     product.setInventory(0);
-                    product.setStatus(ProductStatus.stopStatus);
+                    //product.setStatus(ProductStatus.stopStatus);
                 }
                 product.setUpdateTime(DateUtils.timeToString(new Date()));
                 productDao.save(product);

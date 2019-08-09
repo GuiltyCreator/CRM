@@ -1,12 +1,11 @@
-package com.qingshixun.project.crm.module.OpportunityController.controller;
+package com.qingshixun.project.crm.module.opportunity.controller;
 
 import com.qingshixun.project.crm.core.PageContainer;
-import com.qingshixun.project.crm.module.OpportunityController.service.OpportunityService;
+import com.qingshixun.project.crm.module.opportunity.service.OpportunityService;
 import com.qingshixun.project.crm.web.ResponseData;
 import com.qingshixun.project.crm.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

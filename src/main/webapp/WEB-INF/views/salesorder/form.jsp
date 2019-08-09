@@ -402,7 +402,7 @@
 								+ "<td><input type='text' name='inventory' value='" + item.product.inventory + "' disabled='disabled' />" + "</td>"
 								+ "<td><img width='50px;' height='50px;' src='${ctx}/${imagePath}" + item.product.picture + "' />" + "</td>"
 								+ "<td>" + item.product.status.name + "</td>"
-								+ "<td>" + "<button type='button' onclick='deleteProductFromSalesOrderDetail(this," + item.id + ")' title='删除' class='btn btn-danger btn-xs delete'>" + "<i class='fa fa-trash-o'></i>" + "</button>" + "</td>"
+								+ "<td>" + "<button type='button' onclick='deleteProductFromDetail(this," + item.id + ")' title='删除' class='btn btn-danger btn-xs delete'>" + "<i class='fa fa-trash-o'></i>" + "</button>" + "</td>"
 								+ "</tr>";
                     });
                 $('#detailTbody').append(content);
@@ -413,7 +413,7 @@
     }
   
     //删除产品
-    function deleteProductFromSalesOrderDetail(self, id) {
+    function deleteProductFromDetail(self, id) {
         $.confirm({
             title : false,
             content : '是否确认删除该产品？',

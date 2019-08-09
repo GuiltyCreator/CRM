@@ -28,9 +28,19 @@ public class ProductController extends BaseController {
      * @return
      */
     @RequestMapping("/products")
-    public String toProductPage(Model model){
+    public String toProductsPage(Model model){
         model.addAttribute("imagePath", ImageUtils.DEFAULT_IMAGE_PATH);
         return "/product/products";
+    }
+
+    /**
+     * 进入产品的选择界面
+     * @return
+     */
+    @RequestMapping("/product")
+    public String toProductPage(Model model){
+        model.addAttribute("imagePath", ImageUtils.DEFAULT_IMAGE_PATH);
+        return "/product/product";
     }
 
     /**
@@ -53,7 +63,7 @@ public class ProductController extends BaseController {
      */
     @RequestMapping("/getSelectedProducts/{ids}")
     @ResponseBody
-    public ResponseData getSelectedProduct(@PathVariable Long[] ids){
+    public ResponseData getSelectedProducts(@PathVariable Long[] ids){
         ResponseData data=new ResponseData();
         try{
             data.setData(productService.getProductByIds(ids));
@@ -64,5 +74,38 @@ public class ProductController extends BaseController {
         }
         return data;
     }
+
+    /**
+     * 返回选择的产品信息
+     * @param productId
+     * @return
+     */
+    @RequestMapping("/getSelectedProduct/{productId}")
+    @ResponseBody
+    public ResponseData getSelectedProduct(@PathVariable Long productId){
+        ResponseData data=new ResponseData();
+        try{
+            data.setData(productService.getProductById(productId));
+        }
+        catch (Exception e){
+            logger.error(e.getMessage(), e);
+            data.setError(e.getMessage());
+        }
+        return data;
+    }
+
+
+
+    /**
+     * 获取可供查看的产品分页信息
+     * @param params
+     * @return
+     */
+    @RequestMapping(value = "/list/problem")
+    @ResponseBody
+    public PageContainer getProductList(@RequestParam Map<String ,String> params){
+    return productService.getProductList(params);
+    }
+
 }
 

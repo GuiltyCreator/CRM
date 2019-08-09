@@ -1,9 +1,9 @@
-package com.qingshixun.project.crm.module.OpportunityController.service;
+package com.qingshixun.project.crm.module.opportunity.service;
 
 import com.qingshixun.project.crm.core.BaseService;
 import com.qingshixun.project.crm.core.PageContainer;
 import com.qingshixun.project.crm.model.OpportunityModel;
-import com.qingshixun.project.crm.module.OpportunityController.dao.OpportunityDao;
+import com.qingshixun.project.crm.module.opportunity.dao.OpportunityDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,8 @@
-package com.qingshixun.project.crm.module.OpportunityController.dao;
+package com.qingshixun.project.crm.module.opportunity.dao;
 
 import com.qingshixun.project.crm.core.BaseHibernateDao;
 import com.qingshixun.project.crm.core.PageContainer;
 import com.qingshixun.project.crm.model.OpportunityModel;
-import org.hibernate.criterion.Criterion;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
