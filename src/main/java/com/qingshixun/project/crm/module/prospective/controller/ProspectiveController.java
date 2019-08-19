@@ -83,6 +83,11 @@ public class ProspectiveController extends BaseController {
         return responseData;
     }
 
+    /**
+     * 保存潜在用户
+     * @param prospectiveModel
+     * @return
+     */
     @RequestMapping(value = "/save")
     @ResponseBody
     public ResponseData save(ProspectiveModel prospectiveModel){
