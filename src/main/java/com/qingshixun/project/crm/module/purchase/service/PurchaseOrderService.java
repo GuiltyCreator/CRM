@@ -108,7 +108,7 @@ public class PurchaseOrderService extends BaseService {
                 }
             }
 
-            product.setInventory(inventory - (newquantity - oldquantity));
+            product.setInventory(inventory + (newquantity - oldquantity));
             if (product.getInventory() <= 0) {
                 product.setInventory(0);
             }

@@ -122,7 +122,7 @@ public class SalesOrderService extends BaseService {
 /*
             报错原因：org.hibernate.NonUniqueObjectException:
             a different object with the same identifier value was already associated with the session
-            存在多个session对象
+            具有相同标识符值的其他对象已与session关联
             所以采用前端hide以前的需求数量，存到request里，后台提取。
 
             if(!flag){
